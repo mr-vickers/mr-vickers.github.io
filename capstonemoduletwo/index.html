@@ -1,33 +1,49 @@
 <html>
   <head>
-    <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, maximum-scale=3, user-scalable=1"
-    />
-    <title></title>
-    <link rel="preconnect" href="https://use.typekit.net" crossorigin />  <link rel="stylesheet" rel="preload" as="font" href="https://use.typekit.net/.css?v=1761024151" />
-    
-    <script src="scormdriver.js" charset="utf-8"></script>
-    <script>
-      USE_LEGACY_IDENTIFIERS_FOR_2004 = true;
-      REVIEW_MODE_IS_READ_ONLY = false;
-      window.onbeforeunload = () => window.Unload();
-      const LoadContent = function () {
-        [
-          "assets/js/project.js",
-          "dist/main.chunk.js",
-          "dist/runtime-main.bundle.js",
-          "dist/vendors-main.chunk.js",
-        ].forEach((src) => {
-          script = document.createElement("script");
-          script.src = src;
-          script.charset = "utf-8";
-          script.async = false;
-          document.body.appendChild(script);
-        });
-      };
-    </script>
+<meta charset="utf-8" />
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1, maximum-scale=3, user-scalable=1"
+/>
+<title></title>
+
+<!-- ✅ Replace Typekit with Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Afacad:wght@400;700&display=swap"
+  rel="stylesheet"
+/>
+
+<!-- (Optional) security belt: block any old Typekit calls -->
+<meta http-equiv="Content-Security-Policy"
+  content="default-src 'self';
+           script-src 'self';
+           style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+           font-src 'self' data: https://fonts.gstatic.com;
+           connect-src 'self';
+           img-src 'self' data:;">
+
+<script src="scormdriver.js" charset="utf-8"></script>
+<script>
+  USE_LEGACY_IDENTIFIERS_FOR_2004 = true;
+  REVIEW_MODE_IS_READ_ONLY = false;
+  window.onbeforeunload = () => window.Unload();
+  const LoadContent = function () {
+    [
+      "assets/js/project.js",
+      "dist/main.chunk.js",
+      "dist/runtime-main.bundle.js",
+      "dist/vendors-main.chunk.js",
+    ].forEach((src) => {
+      const script = document.createElement("script");
+      script.src = src;
+      script.charset = "utf-8";
+      script.async = false;
+      document.body.appendChild(script);
+    });
+  };
+</script>
   </head>
   <body onload="Start()">
     <div id="app" style="width: 100%; height: 100%"></div>
