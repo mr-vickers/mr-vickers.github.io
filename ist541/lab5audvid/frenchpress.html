@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Lab 5 Audio Video</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Afacad:ital,wght@0,400..700;1,400..700&family=Lexend&display=swap" rel="stylesheet">
+	<link href="css/styles.css" rel="stylesheet">
+	
+</head>
+
+<body>
+	<div id="wrapper">
+    <h1>French Press Brew Guide</h1>
+    <nav class="menu" aria-label="Main">
+      <a href="index.html" aria-current="page">Grind and Boil</a>
+      <a href="frenchpress.html">Bloom and Plunge</a>
+    </nav>
+
+    <details open>
+      <summary class="stepTitle">Blooming Grinds</summary>
+      <div class="stepContent">
+        <div class="stepDescription">
+          <p>Watch as we bloom the grind, letting air escape the grounds before finishing the pour. Wait 30 seconds before finishing filling the press (depending on amound brewed).</p>
+          <video controls preload="metadata" width="800">
+            <source src="video/bloom.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </div>
+    </details>
+
+    <details open>
+      <summary class="stepTitle">Plunging</summary>
+      <div class="stepContent">
+        <div class="stepDescription">
+          <p>Watch as we plunge the plunger slowly. The plunge should take about 30 seconds (depending on amount of coffee brewed).</p>
+          <video controls preload="metadata" width="800">
+            <source src="video/plunge.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </div>
+    </details>
+  </div>
+
+</body>
+</html>
