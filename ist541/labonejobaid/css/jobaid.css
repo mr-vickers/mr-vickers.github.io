@@ -1,0 +1,87 @@
+/* CSS Document */
+/* All comments go between the front slash and asterisk symbols */
+
+body {
+	background-color: #D7D3B8;   /* background color */
+	color: #263A2B;          /* text color for the entire page */
+	  font-family: "Lexend", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+h1, h2 { 
+	text-align:center; 	/* centers h1 and h2 content */
+	 font-family: "Afacad", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+h2 {
+	margin-bottom: 0.5rem;
+	
+}
+
+li {
+	margin: 0.25rem 0;
+	
+}
+
+ul, ol {
+  margin: 0.5rem 0 0.5rem 1.25rem;
+  padding: 0;
+}
+
+a {
+  color: #0b5cad;
+  text-decoration: none;
+}
+
+a:hover, a:focus {
+  text-decoration: underline;
+}
+
+/* styles for the "wrapper" div, notice that "wrapper" is preceded by "#" */
+#wrapper {
+	width: 85%;
+	margin: 0 auto;    /* centers wrapper */
+}
+
+/* styles for the "stepTitle" class, notice that "stepTitle" is preceded by a dot */
+.stepTitle{
+	padding:20px;
+	text-align:left;
+	background-color:#FFC40C;
+	font-weight: bold;
+	font-size: 150%;
+ }
+
+.stepContent{ 
+	background-color: white;
+	padding:7px;
+	display: flex; /*creates multiple column layout */
+	flex-wrap: wrap; /* Makes mobile layout nice */
+	justify-content: center;
+}
+
+.stepDescription {
+	width:55%;
+	padding:5px;
+	line-height:150%;
+}
+
+.stepImage {
+	width:40%;	/* 100% doesn't seem necessary */
+	padding:5px;
+	text-align: center;
+}
+
+.stepImage img {
+    width:100%;
+    height:auto;
+}
+
+strong {
+  font-weight: 800;
+}
