@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>How to Grind</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!-- Fonts + unified CSS -->
+  <link href="https://fonts.googleapis.com/css2?family=Afacad:wght@400;600&family=Lexend:wght@300;400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <!-- jQuery (for this activity) -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+
+<body>
+  <div id="wrapper">
+    <h1>How to Grind</h1>
+
+    <!-- Shared nav -->
+    <nav class="menu" aria-label="Main">
+      <a href="index.html">Home</a>
+      <a href="history.html">History</a>
+      <a href="filter.html">Filtering Water</a>
+      <a href="grind.html" aria-current="page">How to Grind</a>
+      <a href="coldbrew.html">Make Cold-Brew</a>
+      <a href="frenchpress.html">French Press</a>
+      <a href="about.html">About</a>
+    </nav>
+
+    <details open>
+      <summary class="stepTitle">Coffee Grinding and Sizes (Interactive)</summary>
+      <div class="stepContent">
+        <div class="stepDescription centered">
+
+          <p class="centered">Click the image to move through grind stages, or use “Next”.</p>
+
+          <!-- Activity image + titles -->
+          <img id="phaseImage" src="img/wholebean.png" alt="Whole coffee beans in a pile" class="centered-img" />
+          <h2 id="phaseTitle">Whole Bean</h2>
+          <p class="centered" id="phaseText">Roasted coffee starts off as a whole bean.</p>
+
+          <button id="next" class="centered">Next</button>
+
+          <!-- Quiz (hidden until user reaches it) -->
+          <div id="quiz" aria-live="polite">
+            <img id="coffeeCup" src="img/coffeecup.png" alt="Coffee cup full of coffee" class="centered-img-sm" />
+            <h2>Quick Quiz</h2>
+            <p>Which grind size is best for French press?</p>
+
+            <!-- Clickable choices -->
+            <h3 class="choices option" data-correct="false" role="button" tabindex="0">Whole Bean</h3>
+            <h3 class="choices option" data-correct="true"  role="button" tabindex="0">Coarse</h3>
+            <h3 class="choices option" data-correct="false" role="button" tabindex="0">Fine</h3>
+
+            <div id="feedback" class="centered" style="min-height:2.2rem;"></div>
+          </div>
+
+        </div>
+      </div>
+    </details>
+  </div>
+
+  <script>
+    // Grind stages activity + quiz (jQuery)
+    $(function() {
+      const phase = [
+        { image: "img/wholebean.png",   title: "Whole Bean",   text: "Roasted coffee starts off as a whole bean." },
+        { image: "img/coarsegrind.png", title: "Coarse Grind", text: "Coarse grind is ideal for French press and cold brew." },
+        { image: "img/finegrind.png",   title: "Fine Grind",   text: "Fine grind is perfect for espresso and moka pots." }
+      ];
+
+      let current = 0;
+      const last = phase.length - 1;
+
+      function update() {
+        $("#phaseImage").attr("src", phase[current].image);
+        $("#phaseTitle").text(phase[current].title);
+        $("#phaseText").text(phase[current].text);
+        $("#next").text(current === last ? "Quiz" : "Next");
+      }
+
+      // Advance on image click (no loop)
+      $("#phaseImage").on("click", function() {
+        if (current < last) {
+          current++;
+          update();
+        }
+      });
+
+      // Button: Next → Quiz → Start Over
+      $("#next").on("click", function() {
+        const label = $(this).text().trim();
+
+        if (label === "Next") {
+          if (current < last) {
+            current++;
+            update();
+          }
+          return;
+        }
+
+        if (label === "Quiz") {
+          $("#phaseImage, #phaseTitle, #phaseText").hide();
+          $("#quiz").fadeIn(150);
+          $("#feedback").html("");
+          $(".option").removeClass("correct wrong");
+          $(this).text("Start Over");
+          return;
+        }
+
+        if (label === "Start Over") {
+          current = 0;
+          update();
+          $("#quiz").hide();
+          $("#phaseImage, #phaseTitle, #phaseText").show();
+          $(this).text("Next");
+          return;
+        }
+      });
+
+      // Quiz logic + specific feedback
+      function rightAnswer(){
+        $("#feedback").html("<span class='ok'>✅ Correct! French press uses a coarse grind.</span>");
+      }
+      function wrongAnswer1(){
+        $("#feedback").html("<span class='err'>❌ Whole beans aren’t ground at all. Try again.</span>");
+      }
+      function wrongAnswer2(){
+        $("#feedback").html("<span class='err'>❌ Fine grind is for espresso. Try again.</span>");
+      }
+
+      // Click a choice
+      $("#quiz").on("click", ".option", function() {
+        const isCorrect = $(this).data("correct") === true || $(this).attr("data-correct") === "true";
+        $(".option").removeClass("correct wrong");
+        if (isCorrect) {
+          $(this).addClass("correct");
+          rightAnswer();
+        } else {
+          $(this).addClass("wrong");
+          const text = $(this).text().trim().toLowerCase();
+          if (text.includes("whole")) wrongAnswer1();
+          else wrongAnswer2();
+        }
+      });
+
+      // Keyboard support
+      $("#quiz").on("keydown", ".option", function(e) {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          $(this).click();
+        }
+      });
+
+      // Initial render
+      update();
+      $("#quiz").hide(); // ensure hidden on load
+    });
+  </script>
+</body>
+</html>
