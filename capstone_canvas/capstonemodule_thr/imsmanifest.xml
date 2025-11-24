@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<manifest identifier="add_anx_mod_03" version="1.0" 
+       xmlns="http://www.imsproject.org/xsd/imscp_rootv1p1p2"
+       xmlns:adlcp="http://www.adlnet.org/xsd/adlcp_rootv1p2"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.imsproject.org/xsd/imscp_rootv1p1p2 imscp_rootv1p1p2.xsd
+                           http://www.imsglobal.org/xsd/imsmd_rootv1p2p1 imsmd_rootv1p2p1.xsd
+                           http://www.adlnet.org/xsd/adlcp_rootv1p2 adlcp_rootv1p2.xsd">
+	<metadata>
+		<schema>ADL SCORM</schema>
+		<schemaversion>1.2</schemaversion>
+		<adlcp:location>metadata.xml</adlcp:location> 
+	</metadata>
+	<organizations default="add_anx_mod_03_ORG">
+		<organization identifier="add_anx_mod_03_ORG">
+			<title>Addressing Anxiety in the Mathematics Classroom</title>
+			<item identifier="add_anx_mod_03_SCO" isvisible="true" identifierref="add_anx_mod_03_SCO_RES">
+				<title>Course Object title</title>
+			</item>
+			<metadata>
+				<schema>ADL SCORM</schema>
+				<schemaversion>1.2</schemaversion>
+				<adlcp:location>metadata.xml</adlcp:location> 
+			</metadata>	
+		</organization>
+	</organizations>
+	<resources>
+		<resource identifier="add_anx_mod_03_SCO_RES" type="webcontent" href="index.html" adlcp:scormtype="sco">
+			
+			<metadata>
+				<schema>ADL SCORM</schema>
+				<schemaversion>1.2</schemaversion>
+				<adlcp:location>metadata.xml</adlcp:location> 
+			</metadata>
+			
+			<file href="assets/htmlimages/Answer_checkbox_correct.png"/>
+		    <file href="index.html"/>
+			<file href="scormdriver.js"/>
+			<file href="browsersniff.js"/>
+			
+<file href="assets/htmlimages/Answer_checkbox_incorrect.png"/> 
+<file href="assets/htmlimages/Answer_radio_correct.png"/> 
+<file href="assets/htmlimages/Answer_radio_incorrect.png"/> 
+<file href="assets/htmlimages/Download_certificate_icon.svg"/> 
+<file href="assets/htmlimages/img_trans.gif"/> 
+<file href="assets/js/project.js"/> 
+<file href="dist/main.chunk.js"/> 
+<file href="dist/main.chunk.js.br"/> 
+<file href="dist/runtime-main.bundle.js"/> 
+<file href="dist/vendors-main.chunk.js"/> 
+<file href="dist/vendors-main.chunk.js.LICENSE.txt"/> 
+<file href="dist/vendors-main.chunk.js.br"/> 
+<file href="dr/015863.svg"/> 
+<file href="dr/016415.png"/> 
+<file href="dr/016525.png"/> 
+<file href="dr/01949.svg"/> 
+<file href="dr/02092.svg"/> 
+<file href="dr/02251.svg"/> 
+<file href="dr/04378.svg"/> 
+<file href="dr/04453.png"/> 
+<file href="dr/04768.svg"/> 
+<file href="dr/049135.png"/> 
+<file href="dr/049171.png"/> 
+<file href="dr/049902.png"/> 
+<file href="dr/049938.png"/> 
+<file href="dr/0503.png"/> 
+<file href="dr/050321.png"/> 
+<file href="dr/050357.png"/> 
+<file href="dr/051044.png"/> 
+<file href="dr/051080.png"/> 
+<file href="dr/054401.jpg"/> 
+<file href="dr/054403.jpg"/> 
+<file href="dr/054405.jpg"/> 
+<file href="dr/054407.jpg"/> 
+<file href="dr/0555.svg"/> 
+<file href="dr/059949.svg"/> 
+<file href="dr/0643.svg"/> 
+<file href="dr/loading.gif"/> 
+<file href="goodbye.html"/> 
+<file href="index.html"/> 
+<file href="pools/243/243.js"/> 
+<file href="project.txt"/> 
+<file href="vr/Vi1250.mp4"/> 
+<file href="Utilities.js"/> 
+		</resource>
+	</resources>
+</manifest>
