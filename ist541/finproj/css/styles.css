@@ -239,3 +239,19 @@ audio { margin: .25rem 0 .5rem; }
   summary.stepTitle { font-size: 1.15rem; }
   .menu a { font-size: 1rem; }
 }
+
+button {
+  font-family: inherit;
+  padding: 8px 16px;
+  border-radius: 8px;
+  border: none;
+  background: var(--accent);
+  color: var(--text);
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
