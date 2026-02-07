@@ -258,3 +258,26 @@ button:disabled {
   opacity: 0.5;
   cursor: not-allowed;
 }
+
+progress {
+  appearance: none;
+  border: none;
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+/* Background of the bar */
+progress::-webkit-progress-bar {
+  background-color: #eee;
+}
+
+/* The filling part (Chrome/Safari/Edge) */
+progress::-webkit-progress-value {
+  background-color: var(--accent);
+  transition: width 1s linear;
+}
+
+/* The filling part (Firefox) */
+progress::-moz-progress-bar {
+  background-color: var(--accent);
+}
