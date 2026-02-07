@@ -119,23 +119,24 @@ summary.stepTitle::-webkit-details-marker { display: none; }
 
 .stepContent {
   background-color: var(--card);
-  padding: 1rem;
+  padding: 1.5rem;
   display: flex;
-  flex-wrap: wrap;
-  gap: .5rem 1rem;
-  justify-content: center;
+  flex-direction: column; /* Stack vertically by default */
+  gap: 1rem;
   border-radius: 0 0 var(--radius) var(--radius);
   box-shadow: var(--shadow);
   margin: 0 0 1.25rem;
 }
+
 .stepContent:hover {
   box-shadow: 0 6px 16px rgba(0,0,0,0.12);
   transform: translateY(-1px);
   transition: box-shadow .25s ease, transform .25s ease;
 }
 
-.stepDescription { width: 55%; min-width: 260px; padding: 6px; }
-.stepImage       { width: 40%; min-width: 220px; padding: 6px; text-align: center; }
+.stepDescription { flex: 1; }
+.stepImage, .video-container { width: 45%; }
+}
 .stepImage img   { width: 100%; height: auto; border-radius: var(--radius); box-shadow: 0 1px 4px rgba(0,0,0,0.08); }
 
 /* Warning callouts for variable screen sizes */
@@ -158,7 +159,9 @@ audio, video, iframe {
   border-radius: var(--radius);
   box-shadow: var(--shadow);
 }
-audio { margin: .25rem 0 .5rem; }
+audio {
+  width: 100%;
+}
 
 /* embedded video wrapper */
 .video-container {
