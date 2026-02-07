@@ -11,6 +11,7 @@
 <body>
   <div id="wrapper">
     <h1>French Press</h1>
+
     <nav class="menu" aria-label="Main">
       <a href="index.html">Home</a>
       <a href="history.html">History</a>
@@ -22,6 +23,40 @@
     </nav>
 
     <p class="centered">For excellent French-press coffee, follow these steps.</p>
+
+    <details open>
+      <summary class="stepTitle">Step one - Pour grounds into brewer</summary>
+      <div class="stepContent">
+        <div class="stepDescription">
+          <audio controls preload="metadata" src="audio/grounds.mp3" style="width: 100%;"></audio>
+          <p class="indented"><em>Note:</em> Use ~1 gram of coffee grounds per 15 grams of water (ratio of 1:15).</p>
+        </div>
+      </div>
+    </details>
+
+    <details>
+      <summary class="stepTitle">Step two - Bring water to a near boil</summary>
+      <div class="stepContent">
+        <div class="stepDescription">
+          <audio controls preload="metadata" src="audio/nearboil.mp3" style="width: 100%;"></audio>
+          <p class="indented"><em>Note:</em> Do not exceed 205&nbsp;degrees&nbsp;Fahrenheit (≈96&nbsp;°C).</p>
+        </div>
+      </div>
+    </details>
+
+    <details>
+      <summary class="stepTitle">Step three - Pour some water to let the grounds bloom</summary>
+      <div class="stepContent">
+        <div class="stepDescription">
+          <div class="video-container">
+            <video controls preload="metadata">
+              <source src="video/bloom.mp4" type="video/mp4" />
+            </video>
+          </div>
+          <p class="indented">Bloom for ~30 seconds to release trapped air pockets.</p>
+        </div>
+      </div>
+    </details>
 
     <details open>
       <summary class="stepTitle">Step four - Wait four minutes</summary>
@@ -37,15 +72,44 @@
         </div>
       </div>
     </details>
+	  
+    <details open>
+      <summary class="stepTitle">Step five - Slowly plunge</summary>
+      <div class="stepContent">
+        <div class="stepDescription">
+          <div class="video-container">
+            <video controls preload="metadata">
+              <source src="video/plunge.mp4" type="video/mp4" />
+            </video>
+          </div>
+          <p class="indented">Plunge slowly over ~30 seconds with steady pressure (adjust for brew size).</p>
+        </div>
+      </div>
+    </details>
 
-    </div>
+    <details>
+        <summary class="stepTitle">Knowledge Check</summary>
+        <div class="stepContent">
+            <div id="quiz" style="width: 100%; text-align: center;">
+                <p><strong>What is the ideal coffee-to-water ratio for French Press?</strong></p>
+                <div class="choices">
+                    <span class="option" data-correct="false">1:5</span>
+                    <span class="option" data-correct="true">1:15</span>
+                    <span class="option" data-correct="false">1:50</span>
+                </div>
+                <p id="quizFeedback" style="margin-top: 1rem; min-height: 1.5em;"></p>
+            </div>
+        </div>
+    </details>
+
+  </div>
 
   <script>
     $(function () {
       const $start = $("#startTimer");
       const $reset = $("#resetTimer");
       const $out = $("#timerText");
-      const $bar = $("#timerBar"); // Added this to fix your previous error
+      const $bar = $("#timerBar");
 
       let timer = null;
       let seconds = 240;
@@ -86,7 +150,9 @@
         $start.prop("disabled", false);
         $reset.prop("disabled", true);
       });
-    });
-  </script>
-</body>
-</html>
+
+      // Quiz logic
+      $(".option").on("click", function() {
+        const isCorrect = $(this).data("correct");
+        $(".option").removeClass("correct wrong");
+        if (isCorrect) {
