@@ -12,12 +12,7 @@
   --radius: 12px;
 }
 
-/* Motion preference */
-@media (prefers-reduced-motion: reduce) {
-  * { animation: none !important; transition: none !important; }
-}
-
-/* Box model */
+/* Base Styles */
 html { box-sizing: border-box; }
 *, *::before, *::after { box-sizing: inherit; }
 
@@ -25,9 +20,8 @@ body {
   margin: 0;
   background-color: var(--bg);
   color: var(--text);
-  font-family: "Lexend", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  font-family: "Lexend", system-ui, sans-serif;
   line-height: 1.5;
-  /* subtle paper grain */
   background-image: radial-gradient(rgba(0,0,0,0.025) 1px, transparent 1px);
   background-size: 12px 12px;
 }
@@ -36,50 +30,25 @@ body {
   width: min(100%, 960px);
   margin: 0 auto;
   padding: 1rem;
-  text-align: left; /* default alignment */
 }
 
-/* Tables (light touch) */
-table { margin: 0 auto; }
-td { background-color: #fff; }
-
-h1, h2 {
+h1 {
   text-align: center;
   font-family: "Afacad", system-ui, sans-serif;
   font-weight: 600;
   margin: .25rem 0 .5rem;
 }
 
-h1::after, h2::after {
+h1::after {
   content: "";
   display: block;
   width: 120px; height: 6px;
   margin: .4rem auto .8rem;
   border-radius: 999px;
   background: linear-gradient(90deg, #4B2E2B 0%, #9C6B4E 55%, #F5E1C8 100%);
-  box-shadow: 0 2px 6px rgba(0,0,0,.12);
 }
 
-p { margin: .5rem 0; }
-strong { font-weight: 800; }
-
-/* Making sure links are plain and not buttons */
-a {
-  color: var(--text);
-  text-decoration: underline;
-  text-underline-offset: 2px;
-  transition: color .2s ease;
-}
-a:hover, a:focus-visible { color: var(--accent-3); outline: none; }
-
-/* Utilities */
-.centered   { text-align: center; }
-.centered-img   { display:block; margin:.5rem auto; max-width:360px; height:auto; }
-.centered-img-sm{ display:block; margin:.5rem auto; max-width:220px; height:auto; }
-.indented { margin-left: 40px; }
-.portrait { width: 75% !important; max-width: 320px; }
-
-/* Making navigation the fancy green buttons */
+/* Nav Menu */
 .menu {
   display: flex;
   justify-content: center;
@@ -90,194 +59,100 @@ a:hover, a:focus-visible { color: var(--accent-3); outline: none; }
 }
 
 .menu a {
-  display: inline-block;
   padding: 10px 16px;
-  font-size: 1.05rem;
-  background-color: #92C149;
-  color: #263A2B;
+  background-color: var(--accent);
+  color: var(--text);
   border-radius: 8px;
   text-decoration: none;
-  transition: background-color .25s ease, color .25s ease;
-}
-.menu a:hover, .menu a:focus-visible {
-  background-color: #FFC40C;
-  color: #008C8D;
-  text-decoration: underline;
+  font-weight: 600;
+  transition: .25s;
 }
 
-/* stepTitle from Lab 2 */
+.menu a:hover, .menu a[aria-current="page"] {
+  background-color: var(--accent-2);
+  color: var(--accent-3);
+}
+
+/* Step Cards */
 summary.stepTitle {
   padding: 12px 14px;
-  text-align: left;
   background-color: var(--accent-2);
   font-weight: 700;
   font-size: 1.25rem;
   border-radius: var(--radius) var(--radius) 0 0;
+  cursor: pointer;
   list-style: none;
 }
-summary.stepTitle::-webkit-details-marker { display: none; }
 
 .stepContent {
   background-color: var(--card);
   padding: 1.5rem;
   display: flex;
-  flex-direction: column; /* Stack vertically by default */
+  flex-direction: column; /* Better for mobile */
   gap: 1rem;
   border-radius: 0 0 var(--radius) var(--radius);
   box-shadow: var(--shadow);
   margin: 0 0 1.25rem;
 }
 
-.stepContent:hover {
-  box-shadow: 0 6px 16px rgba(0,0,0,0.12);
-  transform: translateY(-1px);
-  transition: box-shadow .25s ease, transform .25s ease;
-}
-
-.stepDescription { flex: 1; }
-.stepImage, .video-container { width: 45%; }
-}
-.stepImage img   { width: 100%; height: auto; border-radius: var(--radius); box-shadow: 0 1px 4px rgba(0,0,0,0.08); }
-
-/* Warning callouts for variable screen sizes */
-.warning {
-  background: #FFF6D6;
-  border-left: 4px solid var(--accent-2);
-  padding: .75rem 1rem;
-  border-radius: 8px;
-  display: flex;
-  align-items: flex-start;
-  gap: .5rem;
-}
-.warning .material-icons { font-size: 1.25rem; margin-top: .15rem; flex-shrink: 0; }
-.warning .warn-text { flex: 1; text-align: left; line-height: 1.5; }
-
-audio, video, iframe {
-  display: block;
-  max-width: 100%;
-  margin: 1rem auto;
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
-}
-audio {
-  width: 100%;
-}
-
-/* embedded video wrapper */
-.video-container {
-  position: relative;
-  width: 100%;
-  max-width: 960px;
-  margin: 1rem auto;
-  aspect-ratio: 16 / 9;
-}
-.video-container iframe,
-.video-container video {
-  width: 100%;
-  height: 100%;
-  border: 0;
-  display: block;
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
-}
-
-/* taller embed for iframe of pdf */
-.embed {
-  width: 100%;
-  max-width: 960px;
-  margin: 1rem auto;
-  aspect-ratio: 16 / 9;
-}
-.embed iframe { width: 100%; height: 100%; border: 0; display: block; border-radius: var(--radius); box-shadow: var(--shadow); }
-
-.embed-tall {
-  width: 100%;
-  max-width: 960px;
-  margin: 1rem auto;
-  height: clamp(500px, 78vh, 1100px);
-}
-.embed-tall iframe { width: 100%; height: 100%; border: 0; display: block; }
-
-/* next function for interactive page */
-#next {
-  display: block;
-  margin: .75rem auto;
-  padding: 10px 16px;
+/* Modern Buttons */
+button {
+  display: inline-block;
+  padding: 10px 20px;
   border-radius: 8px;
   background: var(--accent);
   color: var(--text);
   border: 0;
+  font-family: inherit;
+  font-weight: 700;
   cursor: pointer;
   transition: .25s;
 }
-#next:hover, #next:focus-visible { background: var(--accent-2); color: var(--accent-3); }
 
-#quiz { display: none; text-align: center; margin-top: 1rem; }
-#quiz img { max-width: 260px; display: block; margin: .5rem auto 1rem; }
-
-.choices { cursor: pointer; }
-.option { display:inline-block; padding:.4rem .7rem; border:1px solid #ccc; border-radius:8px; margin:.25rem; }
-.option.correct { border-color:#138a36; box-shadow:0 0 0 2px rgba(19,138,54,.18) inset; }
-.option.wrong   { border-color:#c62828; box-shadow:0 0 0 2px rgba(198,40,40,.18) inset; }
-
-.choices.option {
-  display:inline-block;
-  padding:.35rem .6rem;
-  margin:.25rem .35rem;
-  border:1px solid #ccc;
-  border-radius:10px;
-  cursor:pointer;
-  background:#fff;
-  outline: none;
-}
-.choices.option:focus-visible {
-  box-shadow: 0 0 0 3px rgba(0,0,0,0.08), 0 0 0 5px rgba(255,196,12,0.55);
-}
-
-.ok  { color:#138a36; font-weight:700; }
-.err { color:#c62828; font-weight:700; }
-
-@media (max-width: 720px) {
-  .stepDescription, .stepImage { width: 100%; }
-  summary.stepTitle { font-size: 1.15rem; }
-  .menu a { font-size: 1rem; }
-}
-
-button {
-  font-family: inherit;
-  padding: 8px 16px;
-  border-radius: 8px;
-  border: none;
-  background: var(--accent);
-  color: var(--text);
-  cursor: pointer;
-  transition: 0.2s;
+button:hover:not(:disabled) {
+  background: var(--accent-2);
+  transform: translateY(-1px);
 }
 
 button:disabled {
-  opacity: 0.5;
+  opacity: 0.4;
   cursor: not-allowed;
 }
 
+/* Progress Bar */
 progress {
+  width: 100%;
+  height: 12px;
   appearance: none;
   border: none;
-  border-radius: var(--radius);
+  border-radius: 10px;
   overflow: hidden;
 }
+progress::-webkit-progress-bar { background-color: #eee; }
+progress::-webkit-progress-value { background-color: var(--accent); transition: width 0.5s linear; }
 
-/* Background of the bar */
-progress::-webkit-progress-bar {
-  background-color: #eee;
+/* Quiz Styles */
+.option {
+  display: inline-block;
+  padding: .5rem 1rem;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  margin: .25rem;
+  cursor: pointer;
+  background: white;
+  transition: .2s;
 }
+.option:hover { border-color: var(--accent); }
+.option.correct { border-color: #138a36; background: #e8f5e9; }
+.option.wrong { border-color: #c62828; background: #ffebee; }
 
-/* The filling part (Chrome/Safari/Edge) */
-progress::-webkit-progress-value {
-  background-color: var(--accent);
-  transition: width 1s linear;
-}
+.ok { color: #138a36; font-weight: 700; }
+.err { color: #c62828; font-weight: 700; }
 
-/* The filling part (Firefox) */
-progress::-moz-progress-bar {
-  background-color: var(--accent);
+.indented { margin-left: 20px; border-left: 3px solid var(--accent-2); padding-left: 10px; }
+
+@media (min-width: 768px) {
+  .stepContent { flex-direction: row; align-items: center; }
+  .stepDescription { flex: 1; }
+  .video-container { width: 45%; }
 }
