@@ -110,6 +110,7 @@ $(function () {
   function tick(){
     seconds--;
     $out.text(`Steeping... ${fmt(seconds)}`);
+	  $bar.val(seconds); // Update the bar value
     if (seconds <= 0){
       clearInterval(timer);
       timer = null;
@@ -132,6 +133,7 @@ $(function () {
     if (timer){ clearInterval(timer); timer = null; }
     seconds = 240;
     $out.text("Click Start to begin a 4-minute steep.");
+	  $bar.val(240); // Reset the bar value
     $start.prop("disabled", false);
     $reset.prop("disabled", true);
   }
