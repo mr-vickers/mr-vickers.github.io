@@ -155,3 +155,30 @@ progress::-webkit-progress-value { background-color: var(--accent); transition: 
   .stepDescription { flex: 1; }
   .stepImage, .video-container { width: 40%; }
 }
+
+/* Ensure all images inside step cards are contained */
+.stepImage {
+  width: 100%; /* Take full width on mobile */
+  text-align: center;
+}
+
+.stepImage img {
+  max-width: 100%; /* Never wider than the container */
+  height: auto;
+  border-radius: var(--radius);
+  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+}
+
+/* Adjust layout for larger screens */
+@media (min-width: 768px) {
+  .stepContent {
+    flex-direction: row; /* Side-by-side on desktop */
+    align-items: flex-start;
+  }
+  .stepDescription {
+    flex: 1;
+  }
+  .stepImage {
+    width: 40%; /* Professional side-bar width for images */
+  }
+}
